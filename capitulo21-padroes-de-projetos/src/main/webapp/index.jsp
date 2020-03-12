@@ -6,12 +6,8 @@
 </head>
 <body>
 <body>
-<a href="controlador?param=Pagina1">
-	Clique aqui para ir para a primeira página
-</a>
+<a href="Pagina1">Clique aqui para ir para a primeira página</a>
 <br>
-<a href="controlador?param=Pagina2">
-	Clique aqui para ir para a segunda página
-</a>
+<a href="Pagina2">Clique aqui para ir para a segunda página</a>
 </body>
 </html>
