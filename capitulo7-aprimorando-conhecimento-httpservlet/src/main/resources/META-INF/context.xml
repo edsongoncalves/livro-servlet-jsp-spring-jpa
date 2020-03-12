@@ -1,0 +1,8 @@
+ <Context>
+    <Resources allowLinking="false"> 
+        <PostResources readOnly="false" 
+                       className="org.apache.catalina.webresources.DirResourceSet"
+                       base="/Users/edson/arquivos/" 
+                       webAppMount="/arquivos"/> 
+    </Resources>
+</Context>
