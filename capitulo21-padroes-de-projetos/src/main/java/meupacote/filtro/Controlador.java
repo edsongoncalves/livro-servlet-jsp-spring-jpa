@@ -5,8 +5,9 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter( filterName = "/Controlador",
-            urlPatterns = { "/*" }
+@WebFilter( 
+//		filterName = "/Controlador",
+//        urlPatterns = { "/*" }
 )
 public class Controlador implements Filter {
 
