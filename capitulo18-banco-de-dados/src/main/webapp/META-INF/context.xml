@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Capitulo18">    
+<Resource auth="Container"
+	name="jdbc/livraria"
+	driverClassName="com.mysql.cj.jdbc.Driver"
+	factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+	jmxEnabled="true"
+	jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+	maxActive="20"
+	maxIdle="10"
+	maxWait="-1"
+	type="javax.sql.DataSource"
+	url="jdbc:mysql://localhost/livraria?autoReconnect=true"
+	username="edson"
+	password="americapayment"
+	removeAbandoned="true"
+	removeAbandonedTimeout="10"
+	validationInterval="34000"
+	validationQuery="SELECT 1"
+	testOnBorrow="true" 
+	testWhileIdle="true"
+	timeBetweenEvictionRunsMillis="10000"
+	minEvictableIdleTimeMillis="60000" />
+</Context>
