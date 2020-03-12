@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "controlador", urlPatterns = {"/Pagina1", "/Pagina2" })
 public class Controlador extends HttpServlet{
@@ -18,10 +20,16 @@ public class Controlador extends HttpServlet{
 		int lastIndex = uri.lastIndexOf("/");
 		String pagina = uri.substring(lastIndex + 1);
 		
-		if(pagina.equals("Pagina1"))
-			new Pagina1().processa(request, response);
-		else
-			new Pagina2().processa(request, response);
+		//Neste ponto o nome da classe se junta ao pacote, para obter o caminho completo
+		String caminhoDaClasse = String.format("meupacote.%s", pagina);
+		
+		try {
+			View view = (View) Class.forName(caminhoDaClasse).getDeclaredConstructor().newInstance();
+			view.processa(request, response);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 
 		
 	}
