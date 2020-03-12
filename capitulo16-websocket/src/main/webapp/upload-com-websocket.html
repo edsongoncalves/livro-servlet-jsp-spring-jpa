@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Upload com WebSocket</title>
+</head>
+<body>
+	<div id="mensagem"></div>
+	<input type="button" value="Conectar ao WebSocket" onclick="conectar()" />
+	<input type="button" value="Fechar a conexão com WebSocket" onclick="fechar()" />
+	<div>
+		Selecione o arquivo: <input type="file" id="arquivo" />
+		<br>
+		<input type="button" value="Enviar" onclick="enviarArquivo()" />
+	</div>
+	<script>
+		var webSocket;
+		const conectar = function() {
+	        
+			if(webSocket !== undefined && webSocket.readyState !== WebSocket.CLOSED){
+				resposta("Conexão estabelecida.");
+				return;
+			}
+	        
+			webSocket = new WebSocket("ws://localhost:8080/Capitulo16/upload/arquivo");
+	
+			webSocket.binaryType = "arraybuffer";
+			webSocket.onopen = function() {
+				resposta("Conectado ao WebSocket");
+			};
+			webSocket.onmessage = function(evt) {
+	            		resposta(evt.msg);
+			};
+			webSocket.onclose = function() {
+				resposta("Conexão encerrada");
+			};
+			webSocket.onerror = function(e) {
+				resposta(`Erro: ${e.msg}`);
+			}
+		}
+	
+		const enviarArquivo = function() {
+	        
+			if (webSocket.readyState == WebSocket.OPEN) {
+	
+				let uploadFile = document.getElementById('arquivo');
+				let arquivo = uploadFile.files[0];
+				webSocket.send(`filename:${arquivo.name}`);
+				let reader = new FileReader();
+				let rawData = new ArrayBuffer();
+	
+				reader.loadend = function() {
+	
+				}
+				reader.onload = function(e) {
+					rawData = e.target.result;
+					webSocket.send(rawData);
+					resposta(`Arquivo ${arquivo.name} transferido`);
+					webSocket.send('enviado');
+					uploadFile.value='';          
+				}
+				reader.readAsArrayBuffer(arquivo);
+			}
+			else{
+				resposta("Inicie uma conexão com o WebSocket.")
+			}
+		}
+		const fechar = function(){
+			webSocket.close();
+		}
+		const resposta = function(texto){
+			document.getElementById("mensagem").innerHTML += `<br> ${texto}`;
+		}
+
+    </script>
+</body>
+</html>

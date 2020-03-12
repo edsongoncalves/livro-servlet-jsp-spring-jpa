@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chamando seu primeiro WebSocket</title> 
+</head>
+<body>
+	<div id="mensagem"></div>
+	<div>
+		<input type="text" id="enviar" size="50"/>
+	</div>
+	<div>
+		<button type="button" onclick="abrir();">Abrir Conexão</button>
+		<button type="button" onclick="enviar();">Enviar</button>
+		<button type="button" onclick="fechar();">Fechar Conexão</button>
+	</div>
+        
+	<script type="text/javascript">
+                       
+		var webSocket;    
+           
+		const abrir = function() {
+                
+			if(webSocket !== undefined && webSocket.readyState !== WebSocket.CLOSED){
+				resposta("Conexão estabelecida.");
+				return;
+			}
+
+			webSocket = new WebSocket("ws://localhost:8080/Capitulo16/ola-websocket");
+
+                   
+			webSocket.onopen = function(event){
+
+				if(event.data === undefined)
+					return;
+				resposta(event.data);
+			};
+ 
+			webSocket.onmessage = function(event){
+				resposta(event.data);
+			};
+ 
+			webSocket.onclose = function(event){
+				resposta("Conexão encerrada");
+			};
+			
+			webSocket.onerror = function(event){
+				resposta(`Conexão com erro ${event.data}`);
+			};
+		}
+           
+		const enviar = function(){
+			const texto = document.getElementById("enviar");
+			webSocket.send(texto.value);
+			texto.value = "";                
+		}
+           
+		const fechar = function(){
+			webSocket.close();
+		}
+ 
+		const resposta = function(texto){
+			document.getElementById("mensagem").innerHTML += `<br/> ${texto}`;
+		}
+           
+	</script>
+</body>
+</html>
