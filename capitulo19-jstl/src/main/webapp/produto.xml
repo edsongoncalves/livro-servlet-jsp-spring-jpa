@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<produtos>
+	<produto>
+		<id>1</id>
+		<nome>Som Automotivo Media Receiver</nome>
+		<preco>215.00</preco>
+		<descricao>
+			Desenvolvido com materiais de excelente qualidade, ele reproduz arquivos nos formatos mp3, wma, wav e flac
+		</descricao>		
+	</produto>
+	<produto>
+		<id>2</id>
+		<nome>Som Automotivo Pionner</nome>
+		<preco>395.00</preco>
+		<descricao>
+			Garanta a conectividade no seu carro com o Som Automotivo Pionner. Com Bluetooth, reproduz arquivos nos formatos mp3, wma, wav e flac
+		</descricao>		
+	</produto>	
+	<produto>
+		<id>3</id>
+		<nome>Som Automotivo JVC</nome>
+		<preco>249.99</preco>
+		<descricao>
+			Com entrada USB, entrada auxiliar frontal e frente removivel. Reproduz arquivos nos formatos mp3, wma, wav e flac
+		</descricao>		
+	</produto>
+		<produto>
+		<id>4</id>
+		<nome>Televisor Smart Led 29"</nome>
+		<preco>1249.99</preco>
+		<descricao>
+			Com entrada USB, duas entradas HDMI
+		</descricao>		
+	</produto>
+		<produto>
+		<id>5</id>
+		<nome>Televisor Smart Led 47"</nome>
+		<preco>2249.99</preco>
+		<descricao>
+			Com entrada USB, três entradas HDMI
+		</descricao>		
+	</produto>	
+</produtos>
