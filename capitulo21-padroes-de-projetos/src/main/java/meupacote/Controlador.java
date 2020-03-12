@@ -5,7 +5,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet(name = "controlador", urlPatterns = {"/Pagina1", "/Pagina2" })
+@WebServlet(
+//			name = "controlador", 
+//			urlPatterns = {"/Pagina1", "/Pagina2" }
+)
 public class Controlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
