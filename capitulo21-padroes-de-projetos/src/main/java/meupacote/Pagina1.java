@@ -3,10 +3,10 @@ package meupacote;
 
 public class Pagina1 extends Comando {
 
-
-	@Override
 	public void processa() throws Exception {
-		despachar("pagina1");
+		request.setAttribute("titulo", "Título da Página 1");
+		request.setAttribute("conteudo", "Conteúdo da Página 1");
+		despachar("pagina");
 		
 	}
 
