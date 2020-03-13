@@ -17,6 +17,7 @@ public class Controlador extends HttpServlet{
 
 
 		String uri = request.getRequestURI();
+		System.out.println(uri);
 		int lastIndex = uri.lastIndexOf("/");
 		String pagina = uri.substring(lastIndex + 1);
 		
@@ -24,8 +25,9 @@ public class Controlador extends HttpServlet{
 		String caminhoDaClasse = String.format("meupacote.%s", pagina);
 		
 		try {
-			View view = (View) Class.forName(caminhoDaClasse).getDeclaredConstructor().newInstance();
-			view.processa(request, response);
+			Comando comando = (Comando) Class.forName(caminhoDaClasse).getDeclaredConstructor().newInstance();
+			comando.inicia(request, response);
+			comando.processa();
 		} catch (Exception e) {
 
 			e.printStackTrace();
