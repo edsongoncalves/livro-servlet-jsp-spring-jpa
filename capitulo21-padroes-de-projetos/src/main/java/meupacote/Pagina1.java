@@ -1,6 +1,8 @@
 package meupacote;
 
+import meupacote.annotation.Controle;
 
+@Controle("pagina1")
 public class Pagina1 extends Comando {
 
 	public void processa() throws Exception {

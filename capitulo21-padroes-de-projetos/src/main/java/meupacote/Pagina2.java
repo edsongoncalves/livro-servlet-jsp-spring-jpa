@@ -1,5 +1,8 @@
 package meupacote;
 
+import meupacote.annotation.Controle;
+
+@Controle("pagina2")
 public class Pagina2 extends Comando {
 
 
